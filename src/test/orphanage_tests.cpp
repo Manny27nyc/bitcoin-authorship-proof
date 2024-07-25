@@ -21,15 +21,13 @@ BOOST_FIXTURE_TEST_SUITE(orphanage_tests, TestingSetup)
 class TxOrphanageTest : public TxOrphanage
 {
 public:
-    inline size_t CountOrphans() const EXCLUSIVE_LOCKS_REQUIRED(!m_mutex)
+    inline size_t CountOrphans() const
     {
-        LOCK(m_mutex);
         return m_orphans.size();
     }
 
-    CTransactionRef RandomOrphan() EXCLUSIVE_LOCKS_REQUIRED(!m_mutex)
+    CTransactionRef RandomOrphan()
     {
-        LOCK(m_mutex);
         std::map<Wtxid, OrphanTx>::iterator it;
         it = m_orphans.lower_bound(Wtxid::FromUint256(InsecureRand256()));
         if (it == m_orphans.end())
@@ -106,7 +104,7 @@ BOOST_AUTO_TEST_CASE(DoS_mapOrphans)
     // ecdsa_signature_parse_der_lax are executed during this test.
     // Specifically branches that run only when an ECDSA
     // signature's R and S values have leading zeros.
-    g_insecure_rand_ctx = FastRandomContext{uint256{33}};
+    g_insecure_rand_ctx.Reseed(uint256{33});
 
     TxOrphanageTest orphanage;
     CKey key;

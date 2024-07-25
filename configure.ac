@@ -405,6 +405,7 @@ AX_CHECK_COMPILE_FLAG([-Wimplicit-fallthrough], [WARN_CXXFLAGS="$WARN_CXXFLAGS -
 AX_CHECK_COMPILE_FLAG([-Wunreachable-code], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wunreachable-code"], [], [$CXXFLAG_WERROR])
 AX_CHECK_COMPILE_FLAG([-Wdocumentation], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wdocumentation"], [], [$CXXFLAG_WERROR])
 AX_CHECK_COMPILE_FLAG([-Wself-assign], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wself-assign"], [], [$CXXFLAG_WERROR])
+AX_CHECK_COMPILE_FLAG([-Wundef], [WARN_CXXFLAGS="$WARN_CXXFLAGS -Wundef"], [], [$CXXFLAG_WERROR])
 
 dnl Some compilers (gcc) ignore unknown -Wno-* options, but warn about all
 dnl unknown options if any other warning is produced. Test the -Wfoo case, and
@@ -481,11 +482,12 @@ TEMP_CXXFLAGS="$CXXFLAGS"
 CXXFLAGS="$SSE41_CXXFLAGS $CXXFLAGS"
 AC_MSG_CHECKING([for SSE4.1 intrinsics])
 AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-    #include <stdint.h>
     #include <immintrin.h>
   ]],[[
-    __m128i l = _mm_set1_epi32(0);
-    return _mm_extract_epi32(l, 3);
+    __m128i a = _mm_set1_epi32(0);
+    __m128i b = _mm_set1_epi32(1);
+    __m128i r = _mm_blend_epi16(a, b, 0xFF);
+    return _mm_extract_epi32(r, 3);
   ]])],
  [ AC_MSG_RESULT([yes]); enable_sse41=yes; AC_DEFINE([ENABLE_SSE41], [1], [Define this symbol to build code that uses SSE4.1 intrinsics]) ],
  [ AC_MSG_RESULT([no])]
@@ -896,7 +898,7 @@ if test "$TARGET_OS" = "darwin"; then
   AX_CHECK_LINK_FLAG([-Wl,-fixup_chains], [HARDENED_LDFLAGS="$HARDENED_LDFLAGS -Wl,-fixup_chains"], [], [$LDFLAG_WERROR])
 fi
 
-AC_CHECK_HEADERS([sys/select.h sys/prctl.h sys/sysctl.h vm/vm_param.h sys/vmmeter.h sys/resources.h])
+AC_CHECK_HEADERS([sys/select.h sys/prctl.h vm/vm_param.h sys/vmmeter.h sys/resources.h])
 
 AC_CHECK_DECLS([getifaddrs, freeifaddrs],[CHECK_SOCKET],,
     [#include <sys/types.h>
@@ -1316,6 +1318,7 @@ if test "$use_reduce_exports" = "yes"; then
   AX_CHECK_COMPILE_FLAG([-fvisibility=hidden], [CORE_CXXFLAGS="$CORE_CXXFLAGS -fvisibility=hidden"],
   [AC_MSG_ERROR([Cannot set hidden symbol visibility. Use --disable-reduce-exports.])], [$CXXFLAG_WERROR])
   AX_CHECK_LINK_FLAG([-Wl,--exclude-libs,ALL], [RELDFLAGS="-Wl,--exclude-libs,ALL"], [], [$LDFLAG_WERROR])
+  AX_CHECK_LINK_FLAG([-Wl,-no_exported_symbols], [LIBTOOL_APP_LDFLAGS="$LIBTOOL_APP_LDFLAGS -Wl,-no_exported_symbols"], [], [$LDFLAG_WERROR])
 fi
 
 if test "$use_tests" = "yes"; then
@@ -1392,6 +1395,9 @@ if test "$with_libmultiprocess" = "yes" || test "$with_libmultiprocess" = "auto"
   PKG_CHECK_MODULES([LIBMULTIPROCESS], [libmultiprocess], [
      libmultiprocess_found=yes;
      libmultiprocess_prefix=`$PKG_CONFIG --variable=prefix libmultiprocess`;
+     if test "$suppress_external_warnings" != "no" ; then
+       LIBMULTIPROCESS_CFLAGS=SUPPRESS_WARNINGS($LIBMULTIPROCESS_CFLAGS)
+     fi
   ], [true])
 elif test "$with_libmultiprocess" != "no"; then
   AC_MSG_ERROR([--with-libmultiprocess=$with_libmultiprocess value is not yes, auto, or no])
