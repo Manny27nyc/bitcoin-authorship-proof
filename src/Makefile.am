@@ -132,6 +132,7 @@ BITCOIN_CORE_H = \
   chainparamsseeds.h \
   checkqueue.h \
   clientversion.h \
+  cluster_linearize.h \
   coins.h \
   common/args.h \
   common/bloom.h \
@@ -256,7 +257,6 @@ BITCOIN_CORE_H = \
   random.h \
   randomenv.h \
   rest.h \
-  reverse_iterator.h \
   rpc/blockchain.h \
   rpc/client.h \
   rpc/mempool.h \

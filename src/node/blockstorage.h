@@ -166,9 +166,6 @@ private:
     [[nodiscard]] bool FlushChainstateBlockFile(int tip_height);
     bool FindUndoPos(BlockValidationState& state, int nFile, FlatFilePos& pos, unsigned int nAddSize);
 
-    FlatFileSeq BlockFileSeq() const;
-    FlatFileSeq UndoFileSeq() const;
-
     AutoFile OpenUndoFile(const FlatFilePos& pos, bool fReadOnly = false) const;
 
     /**
@@ -243,6 +240,8 @@ private:
 
     const bool m_prune_mode;
 
+    const std::vector<std::byte> m_xor_key;
+
     /** Dirty block index entries. */
     std::set<CBlockIndex*> m_dirty_blockindex;
 
@@ -261,13 +260,13 @@ private:
 
     const kernel::BlockManagerOpts m_opts;
 
+    const FlatFileSeq m_block_file_seq;
+    const FlatFileSeq m_undo_file_seq;
+
 public:
     using Options = kernel::BlockManagerOpts;
 
-    explicit BlockManager(const util::SignalInterrupt& interrupt, Options opts)
-        : m_prune_mode{opts.prune_target > 0},
-          m_opts{std::move(opts)},
-          m_interrupt{interrupt} {}
+    explicit BlockManager(const util::SignalInterrupt& interrupt, Options opts);
 
     const util::SignalInterrupt& m_interrupt;
     std::atomic<bool> m_importing{false};

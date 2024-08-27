@@ -576,16 +576,14 @@ CService CNode::GetAddrLocal() const
 {
     AssertLockNotHeld(m_addr_local_mutex);
     LOCK(m_addr_local_mutex);
-    return addrLocal;
+    return m_addr_local;
 }
 
 void CNode::SetAddrLocal(const CService& addrLocalIn) {
     AssertLockNotHeld(m_addr_local_mutex);
     LOCK(m_addr_local_mutex);
-    if (addrLocal.IsValid()) {
-        LogError("Addr local already set for node: %i. Refusing to change from %s to %s\n", id, addrLocal.ToStringAddrPort(), addrLocalIn.ToStringAddrPort());
-    } else {
-        addrLocal = addrLocalIn;
+    if (Assume(!m_addr_local.IsValid())) { // Addr local can only be set once during version msg processing
+        m_addr_local = addrLocalIn;
     }
 }
 
@@ -1810,13 +1808,11 @@ void CConnman::CreateNodeFromAcceptedSocket(std::unique_ptr<Sock>&& sock,
                              });
     pnode->AddRef();
     m_msgproc->InitializeNode(*pnode, nLocalServices);
-
-    LogPrint(BCLog::NET, "connection from %s accepted\n", addr.ToStringAddrPort());
-
     {
         LOCK(m_nodes_mutex);
         m_nodes.push_back(pnode);
     }
+    LogDebug(BCLog::NET, "connection from %s accepted\n", addr.ToStringAddrPort());
 
     // We received a new connection, harvest entropy from the time (and our peer count)
     RandAddEvent((uint32_t)id);
@@ -3548,6 +3544,13 @@ size_t CConnman::GetNodeCount(ConnectionDirection flags) const
     }
 
     return nNum;
+}
+
+
+std::map<CNetAddr, LocalServiceInfo> CConnman::getNetLocalAddresses() const
+{
+    LOCK(g_maplocalhost_mutex);
+    return mapLocalHost;
 }
 
 uint32_t CConnman::GetMappedAS(const CNetAddr& addr) const
