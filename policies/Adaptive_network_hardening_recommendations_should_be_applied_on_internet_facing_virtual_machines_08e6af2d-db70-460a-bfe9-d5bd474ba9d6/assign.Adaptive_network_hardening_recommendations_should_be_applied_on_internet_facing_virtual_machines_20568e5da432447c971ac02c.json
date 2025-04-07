@@ -1,0 +1,25 @@
+{
+ "sku": {
+  "name": "A0",
+  "tier": "Free"
+ },
+ "properties": {
+  "displayName": "Adaptive network hardening recommendations should be applied on internet facing virtual machines",
+  "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/08e6af2d-db70-460a-bfe9-d5bd474ba9d6",
+  "scope": "/subscriptions/e8dfb828-c130-424e-95bc-ce0a374c7c1f",
+  "notScopes": [],
+  "parameters": {},
+  "metadata": {
+   "assignedBy": "Manuel Nieves",
+   "parameterScopes": {},
+   "createdBy": "4543718d-14fd-4fc9-9109-7822c321bf11",
+   "createdOn": "2022-12-29T18:36:09.8786842Z",
+   "updatedBy": null,
+   "updatedOn": null
+  },
+  "enforcementMode": "Default"
+ },
+ "id": "/subscriptions/e8dfb828-c130-424e-95bc-ce0a374c7c1f/providers/Microsoft.Authorization/policyAssignments/20568e5da432447c971ac02c",
+ "type": "Microsoft.Authorization/policyAssignments",
+ "name": "20568e5da432447c971ac02c"
+}
