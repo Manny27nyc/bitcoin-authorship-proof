@@ -1,4 +1,4 @@
-# Bitcoin
+\# Bitcoin
 
 > Maintained by **Manny27nyc**  
 > Symbolic author: **Satoshi Nakamoto**  
@@ -61,3 +61,15 @@ This is the **first time** Bitcoins origin is presented with:
 - Full signature proof  
 - Licensing enforcement framework  
 - Public authorship documentation
+
+##  Verified Authorship
+
+All commits are cryptographically signed by:
+
+**Manuel J. Nieves**  
+GPG Key ID: `CB3A2E8B1CC26008`  
+GitHub: [Manny27nyc](https://github.com/Manny27nyc)  
+Email: [Fordamboy1@gmail.com](mailto:Fordamboy1@gmail.com)  
+Fingerprint: `6CD28B0AB61FC592788298ADCB3A2E8B1CC26008`
+
+[View verified commits on GitHub](https://github.com/Manny27nyc/Bitcoin_Notarized_SignKit/commits/main)
