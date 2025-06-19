@@ -26,3 +26,6 @@ qrc_*.cpp
 # macOS-specific
 .DS_Store
 build
+
+.gitignore.save
+Quarantine/
