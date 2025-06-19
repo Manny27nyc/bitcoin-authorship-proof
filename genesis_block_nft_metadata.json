@@ -1,0 +1,15 @@
+{
+  "name": "Bitcoin Genesis Block Config",
+  "description": "Original Bitcoin genesis block configuration as authored by Manuel J. Nieves. This NFT documents the cryptographic proof of authorship of Bitcoin's genesis block.",
+  "creator": "Manuel J. Nieves",
+  "sha256": "5f4f2e7f6b6ebb269dfaf532f16d952895ea24fdae6b57102e3e2c2f332bd522",
+  "date_created": "2009-01-03",
+  "file": "genesis_block_config.json",
+  "format": "application/json",
+  "type": "bitcoin-authorship-proof",
+  "license": "CC0-1.0 or Custom License by Author",
+  "notarization": {
+    "signed": true,
+    "public_key": "to be included with GPG or NFT signature"
+  }
+}
