@@ -7,7 +7,12 @@
   "file": "genesis_block_config.json",
   "format": "application/json",
   "type": "bitcoin-authorship-proof",
-  "license": "CC0-1.0 or Custom License by Author",
+  "license": {
+    "name": "Blockchain MIT License",
+    "version": "2014",
+    "author": "Manuel J. Nieves",
+    "reference": "https://github.com/Manny27nyc/Bitcoin_Notarized_SignKit/blob/main/LICENSE"
+  },
   "notarization": {
     "signed": true,
     "public_key": "to be included with GPG or NFT signature"
