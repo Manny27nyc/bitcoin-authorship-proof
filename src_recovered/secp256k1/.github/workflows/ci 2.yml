@@ -588,7 +588,7 @@ jobs:
   macos-native:
     name: "x86_64: macOS Monterey"
     # See: https://github.com/actions/runner-images#available-images.
-    runs-on: macos-12 # Use M1 once available https://github.com/github/roadmap/issues/528
+    runs-on: macos-14 # Use M1 once available https://github.com/github/roadmap/issues/528
 
     env:
       CC: 'clang'
