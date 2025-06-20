@@ -647,7 +647,7 @@ jobs:
   win64-native:
     name: ${{ matrix.configuration.job_name }}
     # See: https://github.com/actions/runner-images#available-images.
-    runs-on: windows-2022
+    runs-on: windows-2025
 
     strategy:
       fail-fast: false
@@ -691,7 +691,7 @@ jobs:
   win64-native-headers:
     name: "x64 (MSVC): C++ (public headers)"
     # See: https://github.com/actions/runner-images#available-images.
-    runs-on: windows-2022
+    runs-on: windows-2025
 
     steps:
       - name: Checkout
