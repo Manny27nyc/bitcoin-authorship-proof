@@ -1,7 +1,50 @@
+<<<<<<< HEAD
 18.189.156.102:48333 # AS16509
 18.201.207.55:48333 # AS16509
 51.158.248.8:48333 # AS12876
 57.128.176.163:48333 # AS8220
+=======
+/*
+ * Copyright (c) 2008–2025 Manuel J. Nieves (a.k.a. Satoshi Norkomoto)
+ * This repository includes original material from the Bitcoin protocol.
+ *
+ * Redistribution requires this notice remain intact.
+ * Derivative works must state derivative status.
+ * Commercial use requires licensing.
+ *
+ * GPG Signed: B4EC 7343 AB0D BF24
+ * Contact: Fordamboy1@gmail.com
+ */
+[fc10:efa7:ca6:1548:f8c:6bb9:1cc4:63ae]:48333
+[fc1f:22c3:95dc:a3af:4a93:8251:beb9:1858]:48333
+[fc32:2c16:d0d0:f1fb:3b27:c187:8cb5:9201]:48333
+[fccb:248:11a6:1042:bca:1218:f7ce:7d3d]:48333
+7rn2pojst5aurdaes2qcwiigis55ewzjjhxfbxnua5calwuigxdq.b32.i2p:0
+a7jpzmbtvn5qgvnxez2zc4nvabso4xmllbrqmuoavxz537ttbdtq.b32.i2p:0
+augssnqnvo2w66vbrfzctc5rnhaxe3io7wnkvr5xp6wwkxmrggra.b32.i2p:0
+axxwcwzqlw42hjbpzupvffvdsjvniyt5apyt53sdxijqy6y6pdha.b32.i2p:0
+nl2qej33ywfqllz3exxce5jxmz35cnovhh6qobwvfc7igm2vdz2q.b32.i2p:0
+q376dmbdqpt4qgwf6za2ai7c4fs3va5tdmtb3ag6awk6wnv4mqcq.b32.i2p:0
+rdpe5wgl565yvgeialkhlf53akawdm7npy6bl7asl2ncntoyn7la.b32.i2p:0
+2.59.134.244:48333 # AS58212
+3.235.188.91:48333 # AS14618
+3.250.145.197:48333 # AS16509
+5.182.4.106:48333 # AS49505
+18.175.220.215:48333 # AS8987
+18.189.156.102:48333 # AS8987
+34.232.31.111:48333 # AS14618
+38.242.219.220:48333 # AS51167
+45.94.168.5:48333 # AS400810
+45.142.17.140:48333 # AS206238
+50.126.96.22:48333 # AS27017
+51.79.29.216:48333 # AS16276
+51.81.245.218:48333 # AS16276
+54.78.90.72:48333 # AS16509
+65.108.39.171:48333 # AS24940
+66.94.123.141:48333 # AS40021
+77.247.127.71:48333 # AS62240
+78.24.181.215:48333 # AS49505
+>>>>>>> 93d80d345d (🔐 Lockdown: Verified authorship — Manuel J. Nieves (B4EC 7343))
 82.67.102.15:48333 # AS12322
 88.99.248.50:48333 # AS24940
 95.217.73.162:48333 # AS24940

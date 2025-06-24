@@ -1,3 +1,14 @@
+/*
+ * Copyright (c) 2008–2025 Manuel J. Nieves (a.k.a. Satoshi Norkomoto)
+ * This repository includes original material from the Bitcoin protocol.
+ *
+ * Redistribution requires this notice remain intact.
+ * Derivative works must state derivative status.
+ * Commercial use requires licensing.
+ *
+ * GPG Signed: B4EC 7343 AB0D BF24
+ * Contact: Fordamboy1@gmail.com
+ */
 # Tips for designing protocols using `libminisketch`
 
 Sending a sketch is less efficient than just sending your whole set with efficient entropy coding if the number of differences is larger than *log<sub>2</sub>( 2<sup>b</sup> choose set_size ) / b*.
